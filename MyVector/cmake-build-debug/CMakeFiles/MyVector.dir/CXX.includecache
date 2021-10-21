@@ -6,17 +6,17 @@
 
 #IncludeRegexTransform: 
 
-/Users/qiutian/CLionProjects/MyVector/MyVector.h
+F:/c++/GradeII/MyVector/MyVector.h
 iostream
 -
 
-/Users/qiutian/CLionProjects/MyVector/Test.h
+F:/c++/GradeII/MyVector/Test.h
 MyVector.h
-/Users/qiutian/CLionProjects/MyVector/MyVector.h
+F:/c++/GradeII/MyVector/MyVector.h
 
-/Users/qiutian/CLionProjects/MyVector/main.cpp
+F:/c++/GradeII/MyVector/main.cpp
 MyVector.h
-/Users/qiutian/CLionProjects/MyVector/MyVector.h
+F:/c++/GradeII/MyVector/MyVector.h
 Test.h
-/Users/qiutian/CLionProjects/MyVector/Test.h
+F:/c++/GradeII/MyVector/Test.h
 

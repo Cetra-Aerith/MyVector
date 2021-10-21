@@ -48,6 +48,11 @@ public:
 
     void show();
     void showWithoutId();
+
+    MyVector<T> operator+(const MyVector<T>& addend);
+    MyVector<T> operator-(const MyVector<T> &addend);
+    int operator*(const MyVector<T> &addend);
+    MyVector<T>& operator=(const MyVector<T> &addend);
 };
 
 template <typename T>
@@ -192,5 +197,43 @@ void MyVector<T>::showWithoutId() {
     cout << ")";
 }
 
+template <typename T>
+MyVector<T> MyVector<T>::operator+(const MyVector<T> &addend) {
+    MyVector<T> temp;
+    for(int i=0; i<Size; i++) temp.data[i] = this->data[i] + addend.data[i];
+    return temp;
+}
 
+template <typename T>
+MyVector<T> MyVector<T>::operator-(const MyVector<T> &addend) {
+    MyVector<T> temp;
+    for(int i=0; i<Size; i++) temp.data[i] = this->data[i] - addend.data[i];
+    return temp;
+}
+
+template <typename T>
+int MyVector<T>::operator*(const MyVector<T> &addend) {
+    int temp=0;
+    for(int i=0; i<Size; i++) temp += this->data[i] * addend.data[i];
+    return temp;
+}
+
+template <typename T>
+MyVector<T> &MyVector<T>::operator=(const MyVector<T> &addend) {
+    for(int i=0; i<Size; i++) this->data[i] = addend.data[i];
+    return *this;
+}
+
+template <typename T>
+T *MyVector<T>::erase(T *pos) {
+    T *p = pos;
+    T *tmp = pos + 1;
+    while(tmp != end()) {
+        *pos = *tmp;
+        pos++;
+        tmp++;
+    }
+    Size--;
+    return p;
+}
 #endif //MYVECTOR_MYVECTOR_H

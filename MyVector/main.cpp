@@ -2,8 +2,8 @@
 #include "Test.h"
 
 int main() {
-    cout << "è¯·è¾“å…¥å‘é‡çš„æ•°æ®ç±»åž‹ï¼š" << endl;
-    cout << "a. æ•´åž‹     b. æµ®ç‚¹åž‹" << endl;
+    cout << "ÇëÊäÈëÏòÁ¿µÄÊý¾ÝÀàÐÍ£º" << endl;
+    cout << "a. ÕûÐÍ     b. ¸¡µãÐÍ" << endl;
 
     char choice_1;
     cin >> choice_1;
@@ -13,65 +13,190 @@ int main() {
             MyVector<MyVector<int>> VectorPool;
 
             while(true) {
-                cout << "1. æ·»åŠ å‘é‡" << endl;
-                cout << "2. æ˜¾ç¤ºå‘é‡" << endl;
-                cout << "3. ä¿®æ”¹å‘é‡" << endl;
-                // cout << "4. åˆ é™¤å‘é‡" << endl;
-                cout << "4. å‘é‡ç›¸åŠ " << endl;
+                cout << "0. ·µ»ØÉÏÒ»¼¶" << endl;
+                cout << "1. Ìí¼ÓÏòÁ¿" << endl;
+                cout << "2. ÏÔÊ¾ÏòÁ¿" << endl;
+                cout << "3. ÐÞ¸ÄÏòÁ¿" << endl;
+                cout << "4. É¾³ýÏòÁ¿" << endl;
+                cout << "5. ÏòÁ¿Ïà¼Ó" << endl;
+                cout << "6. ÏòÁ¿Ïà¼õ" << endl;
+                cout << "7. ÏòÁ¿µã³Ë" << endl;
 
                 int choice_2 = 0;
                 cin >> choice_2;
+                switch (choice_2) {
+                    case 1:{
+                        cout << "ÏòÁ¿£º";
+                        createVector(VectorPool);
+                        break;
+                    }
+                    case 2:{
+                        ShowAllVectors(VectorPool);
+                        break;
+                    }
+                    case 3:{
+                        ShowAllVectors(VectorPool);
+                        cout << "ÇëÊäÈëÒªÐÞ¸ÄÏòÁ¿µÄÐòºÅ£º";
+                        int num;
+                        cin >> num;
 
-                if(choice_2 == 1) {
-                    cout << "å‘é‡ï¼š";
+                        MyVector<int> *myVector = SelectVectorById(VectorPool, num);
+
+                        cout << "a. À©Õ¹Î¬¶È" << endl;
+                        cout << "b. ËõÐ¡Î¬¶È" << endl;
+                        cout << "ÊäÈëÄúÏëÒªÖ´ÐÐµÄ²Ù×÷£º";
+                        char choice_3;
+                        cin >> choice_3;
+                        switch (choice_3) {
+                            case 'a':{
+                                cout << "ÐèÒªÀ©Õ¹Î¬¶ÈµÄÖµ£º";
+                                ExpandVector(myVector);
+                                cout << "ÒÑÀ©Õ¹ÏòÁ¿£º";
+                                myVector->show();
+                                cout << endl;
+                                break;
+                            }
+                            case 'b':{
+                                cout << "¸ÃÏòÁ¿ÏÖÎ¬¶ÈÎª " << myVector->size() << " Î¬" << endl;
+                                cout << "ÐèÒªËõÐ¡¼¸¸öÎ¬¶È: ";
+                                int dim;
+                                cin >> dim;
+                                ShrinkVector(myVector, dim);
+                                cout << "ÒÑËõÐ¡ÏòÁ¿£º";
+                                myVector->show();
+                                cout << endl;
+                                break;
+                            }
+                        }
+                        break;
+                    }
+                    case 4:{
+                        ShowAllVectors(VectorPool);
+                        cout << "ÇëÊäÈëÏëÒª É¾³ýµÄÏòÁ¿µÄÐòºÅ£º" << endl;
+                        int num=0;
+                        /*while(cin>>num){
+                            if(cin.get() =='\n') break;
+                            VectorPool.erase(SelectVectorById(VectorPool,num));
+                        }*/
+                        cin >> num;
+                        VectorPool.erase(SelectVectorById(VectorPool, num));
+                        break;
+                    }
+                    case 5:{
+                        ShowAllVectors(VectorPool);
+
+                        cout << "ÇëÊäÈëÏà¼ÓµÄÁ½¸öÏòÁ¿ÐòºÅ£º" << endl;
+                        int num1, num2;
+                        cout << "µÚÒ»¸öÏòÁ¿ÐòºÅ£º";
+                        cin >> num1;
+                        cout << "µÚ¶þ¸öÏòÁ¿ÐòºÅ£º";
+                        cin >> num2;
+                        //Î¬Êý²»Í¬Ê±µÄÒì³£´¦Àí
+                        //AddVector(VectorPool, num1, num2);
+                        SelectVectorById(VectorPool, num1)->showWithoutId();
+                        cout << " + ";
+                        SelectVectorById(VectorPool, num2)->showWithoutId();
+                        cout << " = ";
+                        (*SelectVectorById(VectorPool,num1)+*SelectVectorById(VectorPool,num2)).showWithoutId();
+                        cout << endl;
+                        break;
+                    }
+                    case 6:{
+                        ShowAllVectors(VectorPool);
+
+                        cout << "ÇëÊäÈëÏà¼õµÄÁ½¸öÏòÁ¿ÐòºÅ£º" << endl;
+                        int num1, num2;
+                        cout << "µÚÒ»¸öÏòÁ¿ÐòºÅ£º";
+                        cin >> num1;
+                        cout << "µÚ¶þ¸öÏòÁ¿ÐòºÅ£º";
+                        cin >> num2;
+                        //Î¬Êý²»Í¬Ê±µÄÒì³£´¦Àí
+                        //AddVector(VectorPool, num1, num2);
+                        SelectVectorById(VectorPool, num1)->showWithoutId();
+                        cout << " - ";
+                        SelectVectorById(VectorPool, num2)->showWithoutId();
+                        cout << " = ";
+                        (*SelectVectorById(VectorPool,num1)-*SelectVectorById(VectorPool,num2)).showWithoutId();
+                        cout << endl;
+                        break;
+                    }
+                    case 7:{
+                        ShowAllVectors(VectorPool);
+
+                        cout << "ÇëÊäÈëµã³ËµÄÁ½¸öÏòÁ¿ÐòºÅ£º" << endl;
+                        int num1, num2;
+                        cout << "µÚÒ»¸öÏòÁ¿ÐòºÅ£º";
+                        cin >> num1;
+                        cout << "µÚ¶þ¸öÏòÁ¿ÐòºÅ£º";
+                        cin >> num2;
+                        //Î¬Êý²»Í¬Ê±µÄÒì³£´¦Àí
+                        //AddVector(VectorPool, num1, num2);
+                        SelectVectorById(VectorPool, num1)->showWithoutId();
+                        cout << " * ";
+                        SelectVectorById(VectorPool, num2)->showWithoutId();
+                        cout << " = ";
+                        *SelectVectorById(VectorPool,num1)**SelectVectorById(VectorPool,num2);
+                        cout << endl;
+                        break;
+                    }
+                    case 0:return 0;
+                }
+               /* if(choice_2 == 1) {
+                    cout << "ÏòÁ¿£º";
                     createVector(VectorPool);
                 } else if(choice_2 == 2) {
                     ShowAllVectors(VectorPool);
                 } else if(choice_2 == 3) {
                     ShowAllVectors(VectorPool);
-                    cout << "è¯·è¾“å…¥è¦ä¿®æ”¹å‘é‡çš„åºå·ï¼š";
+                    cout << "ÇëÊäÈëÒªÐÞ¸ÄÏòÁ¿µÄÐòºÅ£º";
                     int num;
                     cin >> num;
 
                     MyVector<int> *myVector = SelectVectorById(VectorPool, num);
 
-                    cout << "a. æ‰©å±•ç»´åº¦" << endl;
-                    cout << "b. ç¼©å°ç»´åº¦" << endl;
-                    cout << "è¾“å…¥æ‚¨æƒ³è¦æ‰§è¡Œçš„æ“ä½œï¼š";
+                    cout << "a. À©Õ¹Î¬¶È" << endl;
+                    cout << "b. ËõÐ¡Î¬¶È" << endl;
+                    cout << "ÊäÈëÄúÏëÒªÖ´ÐÐµÄ²Ù×÷£º";
                     char choice_3;
                     cin >> choice_3;
 
                     if(choice_3 == 'a') {
-                        cout << "éœ€è¦æ‰©å±•ç»´åº¦çš„å€¼ï¼š";
+                        cout << "ÐèÒªÀ©Õ¹Î¬¶ÈµÄÖµ£º";
                         ExpandVector(myVector);
-                        cout << "å·²æ‰©å±•å‘é‡ï¼š";
+                        cout << "ÒÑÀ©Õ¹ÏòÁ¿£º";
                         myVector->show();
                         cout << endl;
                     } else if(choice_3 == 'b') {
-                        cout << "è¯¥å‘é‡çŽ°ç»´åº¦ä¸º " << myVector->size() << " ç»´" << endl;
-                        cout << "éœ€è¦ç¼©å°å‡ ä¸ªç»´åº¦: ";
+                        cout << "¸ÃÏòÁ¿ÏÖÎ¬¶ÈÎª " << myVector->size() << " Î¬" << endl;
+                        cout << "ÐèÒªËõÐ¡¼¸¸öÎ¬¶È: ";
                         int dim;
                         cin >> dim;
                         ShrinkVector(myVector, dim);
-                        cout << "å·²ç¼©å°å‘é‡ï¼š";
+                        cout << "ÒÑËõÐ¡ÏòÁ¿£º";
                         myVector->show();
                         cout << endl;
                     }
                 } else if(choice_2 == 4) {
                     ShowAllVectors(VectorPool);
 
-                    cout << "è¯·è¾“å…¥ç›¸åŠ çš„ä¸¤ä¸ªå‘é‡åºå·ï¼š" << endl;
+                    cout << "ÇëÊäÈëÏà¼ÓµÄÁ½¸öÏòÁ¿ÐòºÅ£º" << endl;
                     int num1, num2;
-                    cout << "ç¬¬ä¸€ä¸ªå‘é‡åºå·ï¼š";
+                    cout << "µÚÒ»¸öÏòÁ¿ÐòºÅ£º";
                     cin >> num1;
-                    cout << "ç¬¬äºŒä¸ªå‘é‡åºå·ï¼š";
+                    cout << "µÚ¶þ¸öÏòÁ¿ÐòºÅ£º";
                     cin >> num2;
 
-                    AddVector(VectorPool, num1, num2);
+                    //AddVector(VectorPool, num1, num2);
+                    SelectVectorById(VectorPool, num1)->showWithoutId();
+                    cout << " + ";
+                    SelectVectorById(VectorPool, num2)->showWithoutId();
+                    cout << " = ";
+                    (*SelectVectorById(VectorPool,num1)+*SelectVectorById(VectorPool,num2)).showWithoutId();
+                    cout << endl;
                 }
                 else {
                     return 0;
-                }
+                }*/
             }
         }
         case 'b': {

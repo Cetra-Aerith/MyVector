@@ -1,3 +1,3 @@
-/Users/qiutian/CLionProjects/MyVector/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/Users/qiutian/CLionProjects/MyVector/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/qiutian/CLionProjects/MyVector/cmake-build-debug/CMakeFiles/MyVector.dir
+F:/c++/GradeII/MyVector/cmake-build-debug/CMakeFiles/edit_cache.dir
+F:/c++/GradeII/MyVector/cmake-build-debug/CMakeFiles/MyVector.dir
+F:/c++/GradeII/MyVector/cmake-build-debug/CMakeFiles/rebuild_cache.dir
