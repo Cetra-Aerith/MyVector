@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/qiutian/CLionProjects/MyVector/MyVector.h
+iostream
+-
+
+/Users/qiutian/CLionProjects/MyVector/Test.h
+MyVector.h
+/Users/qiutian/CLionProjects/MyVector/MyVector.h
+
+/Users/qiutian/CLionProjects/MyVector/main.cpp
+MyVector.h
+/Users/qiutian/CLionProjects/MyVector/MyVector.h
+Test.h
+/Users/qiutian/CLionProjects/MyVector/Test.h
+
